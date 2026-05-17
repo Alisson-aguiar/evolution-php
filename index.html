@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Moderno | PHP 7.0 → 8.x | Alisson Aguiar - Portfolio</title>
+
+    <!-- Fonts & Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Syntax Highlighter -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Header / Hero -->
+    <div class="container" style="padding-top: 48px;">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 64px;">
+            <div>
+                <span class="badge">
+                    <i class="fas fa-bolt"></i> PHP 7.0 → 8.4 · Evolução Completa
+                </span>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <a href="https://github.com/Alisson-aguiar" target="_blank"
+                    style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+                    <i class="fab fa-github" style="font-size: 22px; color: #e2e8f0;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alisson-aguiars2k/" target="_blank"
+                    style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+                    <i class="fab fa-linkedin-in" style="font-size: 22px; color: #e2e8f0;"></i>
+                </a>
+            </div>
+        </div>
+
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 64px;">
+            <div style="margin-bottom: 20px;">
+                <span class="badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">
+                    ✨ Do PHP 7.0 ao PHP 8.x - A Revolução da Linguagem
+                </span>
+            </div>
+            <h1
+                style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -0.02em;">
+                PHP Moderno <span class="gradient-text">Reimaginado</span>
+            </h1>
+            <p style="font-size: 18px; color: #94a3b8; margin-bottom: 32px;">
+                Uma jornada completa pelas funcionalidades que transformaram o PHP: desde o revolucionário PHP 7.0
+                até as inovações do PHP 8.x. Tipagem, performance, sintaxe moderna e muito mais.
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#php7" class="btn-primary">
+                    <i class="fab fa-php"></i> PHP 7.0 Features
+                </a>
+                <a href="#php8" class="btn-outline">
+                    <i class="fas fa-rocket"></i> PHP 8.x Evolution
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHP 7.0 SECTION - The Revolution -->
+    <div class="container" id="php7">
+        <div class="glass-card" style="padding: 40px; margin-bottom: 48px;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;">
+                <i class="fab fa-php" style="font-size: 48px; color: #a78bfa;"></i>
+                <div>
+                    <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;">
+                        PHP 7.0: <span class="gradient-text">A Revolução da Performance</span>
+                    </h2>
+                    <p style="color: #94a3b8; margin-top: 8px;">Lançado em dezembro de 2015 - 2x mais rápido, menos
+                        memória, e recursos que mudaram tudo</p>
+                </div>
+            </div>
+
+            <div class="version-timeline">
+                <!-- Feature 7.0 - Scalar Type Declarations -->
+                <div class="timeline-item" style="margin-bottom: 48px;">
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #a78bfa;">
+                        <i class="fas fa-check-circle"></i> Scalar Type Declarations
+                    </h3>
+                    <p style="color: #94a3b8; margin-bottom: 16px;">Agora você pode declarar tipos escalares (int,
+                        float, string, bool) nos parâmetros e retornos de funções.</p>
+                    <div class="code-block">
+                        <pre><code class="language-php">&lt;?php
+declare(strict_types=1); // Modo estrito (opcional)
+
+// Declaração de tipos escalares
+function sum(int $a, int $b): int {
+    return $a + $b;
+}
+
+function greet(string $name): string {
+    return "Hello, $name!";
+}
+
+function divide(float $dividend, float $divisor): float {
+    return $dividend / $divisor;
+}
+
+function isAdult(int $age): bool {
+    return $age >= 18;
+}
+
+// Exemplos de uso
+echo sum(10, 20);        // 30
+echo greet("Alisson");   // Hello, Alisson!
+echo divide(15.5, 2.5);  // 6.2
+var_dump(isAdult(25));   // bool(true)
+
+// Com strict_types=1, isso causaria erro:
+// sum("10", "20"); // TypeError
+?></code></pre>
+                    </div>
+                    <span class="badge badge-php7"><i class="fas fa-microchip"></i> PHP 7.0+</span>
+                </div>
+
+                <!-- Feature 7.0 - Return Type Declarations -->
+                <div class="timeline-item" style="margin-bottom: 48px;">
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #a78bfa;">
+                        <i class="fas fa-arrow-right"></i> Return Type Declarations
+                    </h3>
+                    <p style="color: #94a3b8; margin-bottom: 16px;">Garanta que suas funções retornem o tipo esperado,
+                        aumentando a segurança do código.</p>
+                    <div class="code-block">
+                        <pre><code class="language-php">&lt;?php
+// Exemplos complexos com tipos de retorno
+class User {
+    public function __construct(
+        private string $name, 
+        private int $age
+    ) {}
+    
+    public function getName(): string {
+        return $this->name;
+    }
+    
+    public function getAge(): int {
+        return $this->age;
+    }
+    
+    public function toArray(): array {
+        return [
+            'name' => $this->name,
+            'age' => $this->age
+        ];
+    }
+}
+
+// Retorno de array de objetos
+function getActiveUsers(): array {
+    return [
+        new User("Alisson", 28),
+        new User("João", 32)
+    ];
+}
+
+// Retorno auto (determinado automaticamente)
+function multiply(int $a, int $b) {
+    return $a * $b; // Retorna int
+}
+
+$users = getActiveUsers();
+foreach ($users as $user) {
+    echo $user->getName() . " - " . $user->getAge() . "\n";
+}
+?></code></pre>
+                    </div>
+                    <span class="badge badge-php7"><i class="fas fa-check-double"></i> PHP 7.0+</span>
+                </div>
+
+                <!-- Feature 7.0 - Null Coalescing Operator -->
+                <div class="timeline-item" style="margin-bottom: 48px;">
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #a78bfa;">
+                        <i class="fas fa-question-circle"></i> Null Coalescing Operator (??)
+                    </h3>
+                    <p style="color: #94a3b8; margin-bottom: 16px;">Sintaxe elegante para verificar se uma variável
+                        existe e não é nula.</p>
+                    <div class="code-block">
+                        <pre><code class="language-php">&lt;?php
+// Antes do PHP 7
+$username = isset($_GET['user']) ? $_GET['user'] : 'guest';
+
+// Com PHP 7 - Null Coalescing Operator
+$username = $_GET['user'] ?? 'guest';
+
+// Exemplos práticos
+$config = [
+    'database' => 'mysql',
+    'host' => 'localhost'
+];
+
+$database = $config['database'] ?? 'sqlite';
+$password = $config['password'] ?? 'default_password';
+$port = $config['port'] ?? 3306;
+
+// Encadeamento de operadores
+$user = $_SESSION['user'] ?? $_COOKIE['user'] ?? 'anonymous';
+
+// Com arrays aninhados
+$city = $_POST['user']['address']['city'] ?? 'São Paulo';
+
+echo "Database: $database\n";      // mysql
+echo "Password: $password\n";      // default_password
+echo "User: $user\n";              // anonymous
+?></code></pre>
+                    </div>
+                    <span class="badge badge-php7"><i class="fas fa-code"></i> PHP 7.0+</span>
+                </div>
+
+                <!-- Feature 7.0 - Spaceship Operator -->
+                <div class="timeline-item" style="margin-bottom: 48px;">
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #a78bfa;">
+                        <i class="fas fa-rocket"></i> Spaceship Operator (<=>)
+                    </h3>
+                    <p style="color: #94a3b8; margin-bottom: 16px;">Comparação combinada: retorna -1, 0 ou 1.</p>
+                    <div class="code-block">
+                        <pre><code class="language-php">&lt;?php
+// Spaceship operator retorna:
+// -1 se $a < $b
+// 0 se $a == $b
+// 1 se $a > $b
+
+echo 1 <=> 1;  // 0
+echo 1 <=> 2;  // -1
+echo 2 <=> 1;  // 1
+
+// Exemplo prático: ordenação de arrays
+$users = [
+    ['name' => 'Alisson', 'age' => 28],
+    ['name' => 'Bruno', 'age' => 32],
+    ['name' => 'Carla', 'age' => 25],
+];
+
+// Ordenar por idade usando spaceship
+usort($users, function($a, $b) {
+    return $a['age'] <=> $b['age'];
+});
+
+// Ordenação múltipla (primeiro por idade, depois por nome)
+usort($users, function($a, $b) {
+    return $a['age'] <=> $b['age'] ?: $a['name'] <=> $b['name'];
+});
+
+print_r($users);
+?></code></pre>
+                    </div>
+                    <span class="badge badge-php7"><i class="fas fa-sort"></i> PHP 7.0+</span>
+                </div>
+
+                <!-- Feature 7.0 - Constant Arrays -->
+                <div class="timeline-item" style="margin-bottom: 0;">
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #a78bfa;">
+                        <i class="fas fa-database"></i> Constant Arrays define()
+                    </h3>
+                    <p style="color: #94a3b8; margin-bottom: 16px;">Arrays podem ser definidos como constantes usando
+                        define().</p>
+                    <div class="code-block">
+                        <pre><code class="language-php">&lt;?php
+// Array constante global
+define('COLORS', ['red', 'green', 'blue']);
+define('CONFIG', [
+    'app_name' => 'MyApp',
+    'version' => '1.0.0',
+    'debug' => true
+]);
+
+// Acesso
+echo COLORS[0];        // red
+echo CONFIG['app_name']; // MyApp
+
+// Também funciona com const (PHP 7+)
+const STATUS_CODES = [
+    200 => 'OK',
+    404 => 'Not Found',
+    500 => 'Server Error'
+];
+
+echo STATUS_CODES[200]; // OK
+?></code></pre>
+                    </div>
+                    <span class="badge badge-php7"><i class="fas fa-chart-bar"></i> PHP 7.0+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHP 8.x SECTION - Evolution -->
+    <div class="container" id="php8" style="margin-top: 48px;">
+        <div class="glass-card" style="padding: 40px; margin-bottom: 48px;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;">
+                <i class="fas fa-rocket" style="font-size: 48px; color: #34d399;"></i>
+                <div>
+                    <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;">
+                        PHP 8.x: <span class="gradient-text">A Nova Era da Linguagem</span>
+                    </h2>
+                    <p style="color: #94a3b8; margin-top: 8px;">PHP 8.0, 8.1, 8.2, 8.3, 8.4 - Atributos, JIT, Enums,
+                        Fibers e muito mais</p>
+                </div>
+            </div>
+
+            <!-- Feature 8.0 - JIT Compilation -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-fire" style="color: #f59e0b; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">JIT (Just-In-Time Compilation)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Compilação em tempo real que pode aumentar drasticamente
+                    a performance em operações CPU-intensive.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// JIT melhora dramaticamente loops pesados e cálculos matemáticos
+function fibonacci(int $n): int {
+    return match($n) {
+        0, 1 => $n,
+        default => fibonacci($n-1) + fibonacci($n-2)
+    };
+}
+
+function calcularPrimos(int $limite): array {
+    $primos = [];
+    for ($i = 2; $i <= $limite; $i++) {
+        $ePrimo = true;
+        for ($j = 2; $j <= sqrt($i); $j++) {
+            if ($i % $j == 0) {
+                $ePrimo = false;
+                break;
+            }
+        }
+        if ($ePrimo) $primos[] = $i;
+    }
+    return $primos;
+}
+
+// Com JIT ativado, essas operações são muito mais rápidas
+$inicio = microtime(true);
+$fib = fibonacci(35);
+$primos = calcularPrimos(100000);
+$tempo = microtime(true) - $inicio;
+
+echo "Fibonacci(35): $fib\n";
+echo "Primos encontrados: " . count($primos) . "\n";
+echo "Tempo com JIT: {$tempo} segundos\n";
+
+// Para ativar JIT no php.ini:
+// opcache.jit = tracing
+// opcache.jit_buffer_size = 100M
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-tachometer-alt"></i> PHP 8.0+</span>
+            </div>
+
+            <!-- Feature 8.0 - Attributes -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-tags" style="color: #8b5cf6; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Attributes (Annotations)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Metadados nativos substituindo docblocks - mais rápido,
+                    tipado e integrado à linguagem.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Definindo Attributes customizados
+#[Attribute(Attribute::TARGET_METHOD | Attribute::TARGET_CLASS)]
+class Route {
+    public function __construct(
+        public string $path, 
+        public string $method = 'GET'
+    ) {}
+}
+
+#[Attribute(Attribute::TARGET_PROPERTY)]
+class Validate {
+    public function __construct(
+        public string $rule, 
+        public ?string $message = null
+    ) {}
+}
+
+#[Attribute(Attribute::TARGET_METHOD)]
+class Auth {
+    public function __construct(public array $roles = []) {}
+}
+
+// Usando os Attributes
+#[Route('/api/users', 'GET')]
+class UserController {
+    #[Validate('required|email')]
+    private string $email;
+    
+    #[Auth(['admin', 'editor'])]
+    #[Route('/admin/dashboard', 'POST')]
+    public function adminPanel(): string {
+        return "Acesso autorizado";
+    }
+}
+
+// Lendo Attributes via Reflection
+$reflection = new ReflectionMethod(UserController::class, 'adminPanel');
+$routeAttr = $reflection->getAttributes(Route::class)[0] ?? null;
+$authAttr = $reflection->getAttributes(Auth::class)[0] ?? null;
+
+if ($routeAttr) {
+    $route = $routeAttr->newInstance();
+    echo "Rota: {$route->path} [{$route->method}]\n";
+}
+if ($authAttr) {
+    $auth = $authAttr->newInstance();
+    echo "Roles: " . implode(', ', $auth->roles) . "\n";
+}
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-gem"></i> PHP 8.0+</span>
+            </div>
+
+            <!-- Feature 8.0 - Constructor Property Promotion -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-bolt" style="color: #10b981; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Constructor Property Promotion</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Reduza drasticamente o boilerplate de classes DTO/Value
+                    Object.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// ANTES do PHP 8 (muito código repetitivo)
+class OldUser {
+    private string $name;
+    private string $email;
+    private int $age;
+    private ?string $phone;
+    
+    public function __construct(string $name, string $email, int $age, ?string $phone = null) {
+        $this->name = $name;
+        $this->email = $email;
+        $this->age = $age;
+        $this->phone = $phone;
+    }
+    // getters...
+}
+
+// DEPOIS com PHP 8.0 - Constructor Property Promotion
+class User {
+    public function __construct(
+        private string $name,
+        private string $email,
+        private int $age,
+        private ?string $phone = null,
+        private readonly string $id = '', // readonly desde 8.1
+        private array $roles = ['user']
+    ) {}
+    
+    // Getters automáticos ou métodos customizados
+    public function getName(): string {
+        return $this->name;
+    }
+    
+    public function toArray(): array {
+        return get_object_vars($this);
+    }
+}
+
+class OrderDTO {
+    public function __construct(
+        public readonly int $orderId,
+        public readonly float $total,
+        public readonly \DateTimeImmutable $createdAt,
+        public array $items = [],
+        public ?string $coupon = null
+    ) {}
+}
+
+// Uso
+$user = new User(
+    name: "Alisson Aguiar",
+    email: "alisson@email.com",
+    age: 28,
+    phone: "(11) 99999-9999",
+    roles: ['admin', 'editor']
+);
+
+echo $user->getName();
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-code"></i> PHP 8.0+</span>
+            </div>
+
+            <!-- Feature 8.1 - Enums -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-list-ul" style="color: #ec489a; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Enums (PHP 8.1)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Enums nativos com suporte a métodos, valores escalares e
+                    type safety.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Basic Enum
+enum Status {
+    case PENDING;
+    case APPROVED;
+    case REJECTED;
+}
+
+// Backed Enum (com valores)
+enum PaymentStatus: string {
+    case PENDING = 'pending';
+    case PAID = 'paid';
+    case FAILED = 'failed';
+    case REFUNDED = 'refunded';
+    
+    public function label(): string {
+        return match($this) {
+            self::PENDING => 'Aguardando pagamento',
+            self::PAID => 'Pago com sucesso',
+            self::FAILED => 'Falha no pagamento',
+            self::REFUNDED => 'Estornado',
+        };
+    }
+    
+    public function canCancel(): bool {
+        return $this === self::PENDING;
+    }
+}
+
+// Enum com métodos complexos
+enum UserRole: int {
+    case GUEST = 0;
+    case USER = 1;
+    case MODERATOR = 5;
+    case ADMIN = 10;
+    
+    public function permissions(): array {
+        return match($this) {
+            self::GUEST => ['view'],
+            self::USER => ['view', 'comment'],
+            self::MODERATOR => ['view', 'comment', 'edit', 'delete'],
+            self::ADMIN => ['view', 'comment', 'edit', 'delete', 'manage_users', 'settings'],
+        };
+    }
+    
+    public static function fromName(string $name): ?self {
+        return match(strtolower($name)) {
+            'guest' => self::GUEST,
+            'user' => self::USER,
+            'moderator' => self::MODERATOR,
+            'admin' => self::ADMIN,
+            default => null,
+        };
+    }
+}
+
+// Uso prático
+$payment = PaymentStatus::PAID;
+echo $payment->label(); // "Pago com sucesso"
+echo $payment->value;    // "paid"
+
+$role = UserRole::ADMIN;
+$permissions = $role->permissions();
+print_r($permissions);
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-th-list"></i> PHP 8.1+</span>
+            </div>
+
+            <!-- Feature 8.0/8.1 - Match Expression -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-code-branch" style="color: #f59e0b; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Match Expression (PHP 8.0)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Substituto mais seguro e expressivo para switch, sem
+                    coerção de tipos.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Match vs Switch
+function getStatusMessage(string $status): string {
+    return match($status) {
+        'pending' => 'Aguardando processamento',
+        'approved' => 'Aprovado!',
+        'rejected' => 'Infelizmente foi rejeitado',
+        'processing' => 'Processando...',
+        default => 'Status desconhecido',
+    };
+}
+
+// Match com condições mais complexas
+function calculateDiscount(int $total, string $userType): float {
+    return match(true) {
+        $userType === 'vip' && $total >= 500 => $total * 0.25,
+        $userType === 'vip' => $total * 0.15,
+        $total >= 1000 => $total * 0.20,
+        $total >= 500 => $total * 0.10,
+        $total >= 100 => $total * 0.05,
+        default => 0,
+    };
+}
+
+// Match com enums
+function handlePayment(PaymentStatus $status): string {
+    return match($status) {
+        PaymentStatus::PENDING => 'Pagamento pendente',
+        PaymentStatus::PAID => 'Pagamento confirmado',
+        PaymentStatus::FAILED => 'Falha, tente novamente',
+        PaymentStatus::REFUNDED => 'Valor estornado',
+    };
+}
+
+// Match permite múltiplos casos
+function getDayType(int $day): string {
+    return match($day) {
+        1, 7 => 'Final de semana',
+        2, 3, 4, 5, 6 => 'Dia útil',
+        default => 'Dia inválido',
+    };
+}
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-code-branch"></i> PHP 8.0+</span>
+            </div>
+
+            <!-- Feature 8.1 - Fibers -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-project-diagram" style="color: #06b6d4; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Fibers (PHP 8.1) - Concorrência leve</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Permite pausar e retomar execuções, ideal para I/O não
+                    bloqueante.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Fiber básico
+$fiber = new Fiber(function(): void {
+    echo "Iniciando Fiber...\n";
+    $value = Fiber::suspend('Pausado');
+    echo "Retomado com valor: $value\n";
+});
+
+$result = $fiber->start();
+echo "Fiber pausado com: $result\n";
+$fiber->resume('Dados processados');
+
+// Exemplo prático: simulação de tasks concorrentes
+function task1(): void {
+    echo "Task 1: Início\n";
+    Fiber::suspend();
+    echo "Task 1: Finalizada\n";
+}
+
+function task2(): void {
+    echo "Task 2: Processando...\n";
+    Fiber::suspend();
+    echo "Task 2: Concluída!\n";
+}
+
+$fibers = [
+    new Fiber('task1'),
+    new Fiber('task2'),
+];
+
+foreach ($fibers as $fiber) {
+    $fiber->start();
+}
+
+// Continuar todas após alguma condição
+foreach ($fibers as $fiber) {
+    if (!$fiber->isTerminated()) {
+        $fiber->resume();
+    }
+}
+
+// Exemplo com yield-like behavior
+function fetchDataFromAPI(string $url) {
+    return new Fiber(function() use ($url) {
+        echo "Buscando $url...\n";
+        Fiber::suspend("Processando requisição");
+        return "Dados de $url";
+    });
+}
+
+$apiFiber = fetchDataFromAPI("https://api.exemplo.com/users");
+echo $apiFiber->start(); // "Processando requisição"
+$result = $apiFiber->resume();
+echo $result; // "Dados de https://api.exemplo.com/users"
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-code"></i> PHP 8.1+</span>
+            </div>
+
+            <!-- Feature 8.2 - Readonly Classes -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-lock" style="color: #f43f5e; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Readonly Classes (PHP 8.2)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Classes imutáveis - todas as propriedades se tornam
+                    readonly automaticamente.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Classe readonly (todas propriedades imutáveis)
+readonly class Configuration {
+    public function __construct(
+        public string $database,
+        public string $host,
+        public int $port,
+        public bool $debug = false
+    ) {}
+}
+
+readonly class Address {
+    public function __construct(
+        public string $street,
+        public string $city,
+        public string $zipCode,
+        public ?string $complement = null
+    ) {}
+}
+
+// Tentativa de modificação causará erro
+$config = new Configuration(
+    database: 'mysql',
+    host: 'localhost', 
+    port: 3306,
+    debug: true
+);
+
+// $config->port = 5432; // Error: Cannot modify readonly property
+
+// Para modificar, criar nova instância
+$newConfig = new Configuration(
+    database: $config->database,
+    host: $config->host,
+    port: 5432,
+    debug: $config->debug
+);
+
+readonly class UserProfile {
+    public function __construct(
+        public string $name,
+        public string $email,
+        public \DateTimeImmutable $createdAt,
+        private array $metadata = []
+    ) {}
+    
+    // Métodos permitem lógica, mas não modificam propriedades
+    public function getMetadata(): array {
+        return $this->metadata;
+    }
+}
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-shield-alt"></i> PHP 8.2+</span>
+            </div>
+
+            <!-- Feature 8.3 - JSON Error Constants -->
+            <div style="margin-bottom: 48px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-code" style="color: #10b981; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Melhorias na Manipulação de JSON (PHP 8.3)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Novas constantes e funções para tratar erros de JSON de
+                    forma mais elegante.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Nova função json_validate() no PHP 8.3
+$jsonString = '{"name": "Alisson", "age": 28}';
+$invalidJson = '{"name": "Alisson", age: 28}'; // inválido (age sem aspas)
+
+if (json_validate($jsonString)) {
+    echo "JSON válido!\n";
+    $data = json_decode($jsonString, true);
+} else {
+    echo "JSON inválido: " . json_last_error_msg() . "\n";
+}
+
+// Constantes de erro mais detalhadas
+const JSON_ERROR_NONE = 0;
+const JSON_ERROR_DEPTH = 1;
+const JSON_ERROR_STATE_MISMATCH = 2;
+const JSON_ERROR_CTRL_CHAR = 3;
+const JSON_ERROR_SYNTAX = 4;
+// ... e muitas outras
+
+// Função para safe decode
+function safeJsonDecode(string $json, bool $assoc = true): array|object|null {
+    if (!json_validate($json)) {
+        throw new InvalidArgumentException('JSON inválido: ' . json_last_error_msg());
+    }
+    return json_decode($json, $assoc);
+}
+
+// Exemplo prático
+try {
+    $result = safeJsonDecode('{"data": "teste"}');
+    print_r($result);
+} catch (InvalidArgumentException $e) {
+    echo "Erro: " . $e->getMessage();
+}
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-database"></i> PHP 8.3+</span>
+            </div>
+
+            <!-- Feature 8.4 - Property Hooks -->
+            <div style="margin-bottom: 0;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-magic" style="color: #a855f7; font-size: 24px;"></i>
+                    <h3 style="font-size: 20px; font-weight: 600;">Property Hooks (PHP 8.4 Preview)</h3>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 16px;">Hooks nativos para propriedades - get/set customizados
+                    sem métodos auxiliares.</p>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// PHP 8.4 - Property Hooks (em desenvolvimento)
+class User {
+    public function __construct(
+        private string $name,
+        private int $age
+    ) {}
+    
+    public string $fullName {
+        get => $this->name;
+        set {
+            $this->name = strtoupper($value);
+        }
+    }
+    
+    public int $age {
+        get => $this->age;
+        set {
+            if ($value < 0 || $value > 150) {
+                throw new InvalidArgumentException("Idade inválida");
+            }
+            $this->age = $value;
+        }
+    }
+    
+    public string $displayName {
+        get => "{$this->name} ({$this->age} anos)";
+    }
+}
+
+$user = new User("alisson", 28);
+echo $user->displayName; // "alisson (28 anos)"
+$user->fullName = "João Silva";
+echo $user->fullName; // "JOÃO SILVA"
+?></code></pre>
+                </div>
+                <span class="badge badge-php8"><i class="fas fa-star-of-life"></i> PHP 8.4 (Preview)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commands & Installation -->
+    <div class="container" style="margin-bottom: 64px;">
+        <div class="glass-card" style="padding: 40px;">
+            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 20px;">
+                <i class="fas fa-terminal" style="color: #60a5fa;"></i>
+                Comandos para começar com PHP Moderno
+            </h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># 1. Verificar versão do PHP
+php -v
+
+# 2. Instalar PHP 8.3 no Ubuntu/Debian
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install php8.3 php8.3-cli php8.3-fpm php8.3-mysql php8.3-curl php8.3-xml php8.3-zip
+
+# 3. Windows - Baixar PHP manualmente ou usar XAMPP/WAMP
+# https://windows.php.net/download/
+
+# 4. Servidor embutido
+php -S localhost:8000
+
+# 5. Ativar JIT (php.ini)
+# opcache.enable=1
+# opcache.jit=tracing
+# opcache.jit_buffer_size=100M
+
+# 6. Composer (gerenciador de dependências)
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+
+# 7. Criar projeto com PHP 8.3
+composer create-project --prefer-dist laravel/laravel projeto-php83
+
+# 8. Docker com PHP 8.3
+docker run -p 8080:80 -v "$PWD":/var/www/html php:8.3-apache
+
+# 9. Extensões essenciais
+sudo apt install php8.3-mbstring php8.3-pdo php8.3-pgsql php8.3-sqlite3 php8.3-redis
+
+# 10. PHP Code Sniffer (padronização)
+composer global require "squizlabs/php_codesniffer=*"</code></pre>
+            </div>
+            <div style="margin-top: 20px; padding: 16px; background: rgba(59,130,246,0.1); border-radius: 12px;">
+                <i class="fas fa-info-circle" style="color: #60a5fa;"></i>
+                <strong style="margin-left: 8px;">Não precisa instalar nada para ver este portfólio!</strong>
+                <span style="color: #94a3b8;"> Os exemplos são ilustrativos e demonstram as funcionalidades do PHP 7.0
+                    ao 8.4.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 48px; padding: 32px 0;">
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <p style="color: #64748b;">© 2026 — Projeto de portfólio <strong style="color: #e2e8f0;">Alisson
+                        Aguiar</strong><br>
+                    PHP 7.0 → 8.x: Evolução completa da linguagem</p>
+                <div style="display: flex; gap: 16px;">
+                    <a href="https://github.com/Alisson-aguiar" target="_blank"
+                        style="color: #64748b; transition: 0.3s; font-size: 24px;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/alisson-aguiars2k/" target="_blank"
+                        style="color: #64748b; transition: 0.3s; font-size: 24px;">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="assets/js/index.js">
+        
+    </script>
+</body>
+
+</html>
