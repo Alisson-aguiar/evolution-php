@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pages/php-legado.html.bak
+
+Sitemap: https://evolution-php.vercel.app/sitemap.xml

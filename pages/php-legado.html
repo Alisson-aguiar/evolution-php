@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ============ SEO PRINCIPAL ============ -->
+    <title>PHP Legado: Gargalos e Análise Técnica | PHP 5.x e 7.x | Alisson Aguiar</title>
+    <meta name="description"
+        content="Análise técnica completa dos gargalos do PHP legado (5.x e 7.x): performance, tipagem fraca, erros silenciosos e segurança. Entenda como o PHP 7.0 resolveu cada problema com exemplos práticos de código antes e depois.">
+    <meta name="keywords"
+        content="PHP legado, PHP 5.x, PHP 7.0, gargalos PHP, performance PHP, mysql_query, register_globals, PHP moderno, migração PHP, type hints PHP, null coalescing, spaceship operator">
+    <meta name="author" content="Alisson Aguiar">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+
+    <!-- ============ CANONICAL ============ -->
+    <link rel="canonical" href="https://evolution-php.vercel.app/pages/php-legado.html">
+
+    <!-- ============ FAVICON ============ -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/images/site.webmanifest">
+    <meta name="theme-color" content="#6366F1">
+    <meta name="msapplication-TileColor" content="#6366F1">
+
+    <!-- ============ OPEN GRAPH / FACEBOOK ============ -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://evolution-php.vercel.app/pages/php-legado.html">
+    <meta property="og:title" content="PHP Legado: Gargalos e Análise Técnica | Alisson Aguiar">
+    <meta property="og:description"
+        content="Análise honesta dos gargalos do PHP antigo (5.x e 7.x) — performance, tipagem fraca, segurança — e como o PHP 7.0 resolveu cada problema.">
+    <meta property="og:image" content="https://evolution-php.vercel.app/assets/images/banner.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PHP Legado - Gargalos e Análise Técnica">
+    <meta property="og:site_name" content="PHP Moderno Reimaginado">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="article:author" content="Alisson Aguiar">
+    <meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+
+    <!-- ============ TWITTER CARD ============ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@alisson_aguiar">
+    <meta name="twitter:creator" content="@alisson_aguiar">
+    <meta name="twitter:title" content="PHP Legado: Gargalos e Análise Técnica">
+    <meta name="twitter:description"
+        content="Análise completa dos gargalos do PHP antigo e como o PHP 7.0 resolveu cada um deles.">
+    <meta name="twitter:image" content="https://evolution-php.vercel.app/assets/images/banner.jpg">
+
+    <!-- ============ PRECONNECT / DNS PREFETCH ============ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- ============ FONTS & ICONS ============ -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <!-- ============ CSS ============ -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- ============ SCHEMA.ORG (Rich Snippets) ============ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "PHP Legado: Gargalos e Análise Técnica",
+        "description": "Análise técnica dos principais gargalos do PHP antigo (5.x e 7.x) e como o PHP 7.0 resolveu cada um deles.",
+        "image": "https://evolution-php.vercel.app/assets/images/banner.jpg",
+        "author": {
+            "@type": "Person",
+            "name": "Alisson Aguiar",
+            "url": "https://github.com/Alisson-aguiar",
+            "sameAs": [
+                "https://github.com/Alisson-aguiar",
+                "https://www.linkedin.com/in/alisson-aguiars2k/"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PHP Moderno Reimaginado",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://evolution-php.vercel.app/assets/images/favicon-512x512.png"
+            }
+        },
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-01",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://evolution-php.vercel.app/pages/php-legado.html"
+        },
+        "keywords": "PHP legado, PHP 5.x, PHP 7.0, performance PHP, segurança PHP, migração PHP",
+        "articleSection": "PHP",
+        "inLanguage": "pt-BR",
+        "proficiencyLevel": "Intermediate",
+        "dependencies": "PHP 5.x, PHP 7.x",
+        "about": {
+            "@type": "SoftwareApplication",
+            "name": "PHP",
+            "applicationCategory": "ProgrammingLanguage",
+            "operatingSystem": "Cross-platform"
+        }
+    }
+    </script>
+
+    <!-- ============ SCHEMA BREADCRUMB ============ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "PHP Moderno",
+                "item": "https://evolution-php.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "PHP Legado",
+                "item": "https://evolution-php.vercel.app/pages/php-legado.html"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" aria-label="Navegação principal">
+        <div class="container navbar-inner">
+            <a href="../index.html" class="navbar-logo" aria-label="Voltar ao início">
+                <span class="logo-icon" aria-hidden="true">🐘</span>
+                <span>PHP Moderno</span>
+            </a>
+
+            <div class="navbar-links">
+                <a href="../index.html#legacy">Legado</a>
+                <a href="../index.html#php7">PHP 7.0</a>
+                <a href="../index.html#php8">PHP 8.x</a>
+                <a href="php-legado.html" aria-current="page">Gargalos</a>
+            </div>
+
+            <div class="navbar-actions">
+                <a href="https://github.com/Alisson-aguiar" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                    aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alisson-aguiars2k/" target="_blank" rel="noopener noreferrer"
+                    class="icon-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+        <div class="container">
+            <span class="hero-eyebrow"
+                style="background: rgba(244, 63, 94, 0.12); border-color: rgba(244, 63, 94, 0.25); color: #FDA4AF;">
+                <i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Análise técnica · PHP 5.x / 7.x
+            </span>
+
+            <h1>
+                PHP Legado: <span class="gradient-text">os gargalos que moldaram o futuro</span>
+            </h1>
+
+            <p class="lead">
+                Um mergulho honesto nas limitações que fizeram o PHP ser mal visto por tantos anos —
+                e como o PHP 7.0 corrigiu cada uma delas com exemplos práticos.
+            </p>
+
+            <a href="../index.html" class="btn btn-outline">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar ao início
+            </a>
+        </div>
+    </header>
+
+    <!-- ============ SEÇÃO: CONTEXTO HISTÓRICO ============ -->
+    <section class="section" aria-labelledby="contexto-historico">
+        <div class="container">
+            <div class="glass-card version-card">
+                <div class="version-header">
+                    <div class="version-icon legacy" aria-hidden="true">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <div class="version-info">
+                        <h2 id="contexto-historico">O que era o "PHP legado"?</h2>
+                        <p>PHP 4.x e 5.x — o que sustentou a web por mais de uma década.</p>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Entre 2000 e 2015, o PHP foi a espinha dorsal da web. Blogs, e-commerces, fóruns, WordPress,
+                    Joomla, Magento — praticamente tudo era PHP. Mas a linguagem carregava vícios de design
+                    que tornavam o código difícil de manter em projetos grandes.
+                </p>
+
+                <div class="image-showcase">
+                    <img src="../assets/images/php-legacy.jpg" alt="Ilustração representando o PHP legado 5.x"
+                        loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SEÇÃO: GARGALOS PRINCIPAIS ============ -->
+    <section class="section" aria-labelledby="gargalos-tecnicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge badge-legacy">
+                    <i class="fas fa-bug" aria-hidden="true"></i> Gargalos técnicos
+                </span>
+                <h2 id="gargalos-tecnicos" style="margin-top: 16px;">Os principais problemas do <span
+                        class="gradient-text">PHP antigo</span></h2>
+            </div>
+
+            <div class="glass-card version-card">
+                <div class="pain-list">
+                    <div class="pain-item">
+                        <h4><i class="fas fa-turtle" aria-hidden="true"></i> Performance</h4>
+                        <p>Cada requisição recompilava o script. Sem OPcache amplamente adotado, frameworks como Symfony
+                            1 e Zend Framework eram lentos e consumiam muita RAM.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-question" aria-hidden="true"></i> Tipagem fraca</h4>
+                        <p>Sem type hints escalares, bugs silenciosos eram comuns. <code>"10" + "20"</code> funcionava,
+                            mas escondia erros.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-bug" aria-hidden="true"></i> Erros silenciosos</h4>
+                        <p>Funções retornavam <code>false</code> em vez de lançar exceções — causando bugs difíceis de
+                            rastrear.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-code" aria-hidden="true"></i> Sintaxe verbosa</h4>
+                        <p>Sem null coalescing, arrow functions, match — o código era cheio de <code>isset()</code> e
+                            ternários aninhados.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-shield-halved" aria-hidden="true"></i> Segurança</h4>
+                        <p><code>mysql_query()</code>, <code>register_globals</code>, <code>magic_quotes</code> —
+                            recursos inseguros que causaram milhares de vulnerabilidades.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-database" aria-hidden="true"></i> Ecossistema fragmentado</h4>
+                        <p>PEAR, PECL, Composer pré-1.0 — difícil gerenciar dependências e padronizar projetos.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-brain" aria-hidden="true"></i> OOP inconsistente</h4>
+                        <p>Classes com sintaxe confusa, ausência de traits, tipagem fraca em herança.</p>
+                    </div>
+
+                    <div class="pain-item">
+                        <h4><i class="fas fa-clock" aria-hidden="true"></i> Data/hora problemáticas</h4>
+                        <p>Uso massivo de <code>date()</code> e <code>strtotime()</code> com bugs de timezone. Sem
+                            <code>DateTimeImmutable</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SEÇÃO: COMPARATIVO DE CÓDIGO ============ -->
+    <section class="section" aria-labelledby="comparativo-codigo">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge"><i class="fas fa-code" aria-hidden="true"></i> Comparativo</span>
+                <h2 id="comparativo-codigo" style="margin-top: 16px;">Antes <span class="gradient-text">×</span> Depois
+                </h2>
+                <p>Veja como o mesmo código era escrito no PHP legado e como ficou no PHP moderno.</p>
+            </div>
+
+            <!-- Exemplo 1: Descontos -->
+            <div class="glass-card version-card">
+                <h3 style="margin-bottom: 16px; color: #FDA4AF;">
+                    <i class="fas fa-xmark" aria-hidden="true"></i> PHP 5.x — cálculo de desconto verboso
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Sem tipos, sem strict_types
+function calcularDesconto($total, $tipoUsuario) {
+    if ($tipoUsuario == 'vip' && $total >= 500) {
+        return $total * 0.25;
+    } else if ($tipoUsuario == 'vip') {
+        return $total * 0.15;
+    } else if ($total >= 1000) {
+        return $total * 0.20;
+    } else {
+        return 0;
+    }
+}
+?></code></pre>
+                </div>
+            </div>
+
+            <div class="glass-card version-card" style="margin-top: 24px;">
+                <h3 style="margin-bottom: 16px; color: #6EE7B7;">
+                    <i class="fas fa-check" aria-hidden="true"></i> PHP 8.x — match expression tipado
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+declare(strict_types=1);
+
+function calcularDesconto(int $total, string $tipoUsuario): float {
+    return match(true) {
+        $tipoUsuario === 'vip' && $total >= 500 => $total * 0.25,
+        $tipoUsuario === 'vip' => $total * 0.15,
+        $total >= 1000 => $total * 0.20,
+        default => 0,
+    };
+}
+?></code></pre>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Tratamento de dados GET/POST -->
+            <div class="glass-card version-card" style="margin-top: 32px;">
+                <h3 style="margin-bottom: 16px; color: #FDA4AF;">
+                    <i class="fas fa-xmark" aria-hidden="true"></i> PHP 5.x — tratamento de input verboso
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Sem filtros modernos, sem null coalescing
+if (isset($_GET['page'])) {
+    $page = (int) $_GET['page'];
+} else {
+    $page = 1;
+}
+
+if (isset($_GET['limit'])) {
+    $limit = (int) $_GET['limit'];
+    if ($limit > 100) {
+        $limit = 100;
+    }
+} else {
+    $limit = 20;
+}
+
+// SQL Injection era comum:
+$sql = "SELECT * FROM users WHERE id = " . $_GET['id'];
+?></code></pre>
+                </div>
+            </div>
+
+            <div class="glass-card version-card" style="margin-top: 24px;">
+                <h3 style="margin-bottom: 16px; color: #6EE7B7;">
+                    <i class="fas fa-check" aria-hidden="true"></i> PHP 8.x — filter_input + null coalescing
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+declare(strict_types=1);
+
+$page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT) ?? 1;
+$limit = min(
+    filter_input(INPUT_GET, 'limit', FILTER_VALIDATE_INT) ?? 20,
+    100
+);
+
+// PDO + prepared statements (obrigatório desde PHP 7)
+$stmt = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+$stmt->execute(['id' => filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT)]);
+?></code></pre>
+                </div>
+            </div>
+
+            <!-- Exemplo 3: Null handling -->
+            <div class="glass-card version-card" style="margin-top: 32px;">
+                <h3 style="margin-bottom: 16px; color: #FDA4AF;">
+                    <i class="fas fa-xmark" aria-hidden="true"></i> PHP 5.x — null handling verboso
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Null handling verboso
+$username = isset($_GET['user']) ? $_GET['user'] : 'guest';
+
+// Encadeamento aninhado
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+} else if (isset($_COOKIE['user'])) {
+    $user = $_COOKIE['user'];
+} else {
+    $user = 'anonymous';
+}
+
+// Ordenação complexa
+usort($users, function($a, $b) {
+    if ($a['age'] == $b['age']) return 0;
+    return $a['age'] < $b['age'] ? -1 : 1;
+});
+?></code></pre>
+                </div>
+            </div>
+
+            <div class="glass-card version-card" style="margin-top: 24px;">
+                <h3 style="margin-bottom: 16px; color: #6EE7B7;">
+                    <i class="fas fa-check" aria-hidden="true"></i> PHP 8.x — nullsafe + spaceship + arrow fn
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// Null coalescing
+$username = $_GET['user'] ?? 'guest';
+
+// Encadeamento
+$user = $_SESSION['user'] ?? $_COOKIE['user'] ?? 'anonymous';
+
+// Ordenação com spaceship + arrow function
+usort($users, fn($a, $b) => $a['age'] <=> $b['age']);
+
+// Nullsafe operator
+$city = $user?->address?->city ?? 'São Paulo';
+?></code></pre>
+                </div>
+            </div>
+
+            <!-- Exemplo 4: Tratamento de erros -->
+            <div class="glass-card version-card" style="margin-top: 32px;">
+                <h3 style="margin-bottom: 16px; color: #FDA4AF;">
+                    <i class="fas fa-xmark" aria-hidden="true"></i> PHP 5.x — erros silenciosos
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+// mysql_query retornava false silenciosamente
+$result = mysql_query("SELECT * FROM users");
+if (!$result) {
+    // Erro difícil de debugar
+    echo "Erro: " . mysql_error();
+}
+
+// file_get_contents sem try/catch
+$content = file_get_contents('https://api.exemplo.com/data');
+if ($content === false) {
+    echo "Falhou";
+}
+?></code></pre>
+                </div>
+            </div>
+
+            <div class="glass-card version-card" style="margin-top: 24px;">
+                <h3 style="margin-bottom: 16px; color: #6EE7B7;">
+                    <i class="fas fa-check" aria-hidden="true"></i> PHP 8.x — exceções + PDO
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+declare(strict_types=1);
+
+// PDO lança exceções automaticamente
+try {
+    $stmt = $pdo->query('SELECT * FROM users');
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    throw new RuntimeException('Erro ao buscar usuários');
+}
+
+// file_get_contents com tratamento moderno
+try {
+    $content = file_get_contents('https://api.exemplo.com/data');
+    if ($content === false) {
+        throw new RuntimeException('Falha na requisição');
+    }
+    $data = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
+} catch (RuntimeException | JsonException $e) {
+    error_log($e->getMessage());
+}
+?></code></pre>
+                </div>
+            </div>
+
+            <!-- Exemplo 5: DTOs -->
+            <div class="glass-card version-card" style="margin-top: 32px;">
+                <h3 style="margin-bottom: 16px; color: #FDA4AF;">
+                    <i class="fas fa-xmark" aria-hidden="true"></i> PHP 5.x — DTO verboso
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+class UserDTO {
+    private $id;
+    private $name;
+    private $email;
+    private $age;
+
+    public function __construct($id, $name, $email, $age) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
+        $this->age = $age;
+    }
+
+    public function getId() { return $this->id; }
+    public function getName() { return $this->name; }
+    public function getEmail() { return $this->email; }
+    public function getAge() { return $this->age; }
+}
+?></code></pre>
+                </div>
+            </div>
+
+            <div class="glass-card version-card" style="margin-top: 24px;">
+                <h3 style="margin-bottom: 16px; color: #6EE7B7;">
+                    <i class="fas fa-check" aria-hidden="true"></i> PHP 8.x — constructor promotion + readonly
+                </h3>
+                <div class="code-block">
+                    <pre><code class="language-php">&lt;?php
+declare(strict_types=1);
+
+readonly class UserDTO {
+    public function __construct(
+        public int $id,
+        public string $name,
+        public string $email,
+        public int $age,
+    ) {}
+}
+
+// Uso com named arguments
+$user = new UserDTO(
+    id: 1,
+    name: 'Alisson',
+    email: 'alisson@email.com',
+    age: 28,
+);
+?></code></pre>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ SEÇÃO: O QUE O PHP 7 RESOLVEU ============ -->
+    <section class="section" aria-labelledby="php7-resolveu">
+        <div class="container">
+            <div class="glass-card version-card">
+                <div class="version-header">
+                    <div class="version-icon php7" aria-hidden="true">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="version-info">
+                        <h2 id="php7-resolveu">O que o PHP 7.0 <span class="gradient-text">resolveu</span></h2>
+                        <p>Uma correção de rota histórica — cada gargalo tinha uma resposta.</p>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-mini">
+                        <div class="mini-icon" style="background: var(--emerald-soft); color: var(--emerald);">
+                            <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                        </div>
+                        <h4>Performance +100%</h4>
+                        <p>Novo motor Zend Engine 3 com OPcache nativo — memória e CPU drasticamente reduzidas.</p>
+                    </div>
+
+                    <div class="feature-mini">
+                        <div class="mini-icon" style="background: var(--primary-soft); color: var(--primary-light);">
+                            <i class="fas fa-tag" aria-hidden="true"></i>
+                        </div>
+                        <h4>Tipagem escalar</h4>
+                        <p>Type hints para int, float, string e bool — fim dos bugs silenciosos.</p>
+                    </div>
+
+                    <div class="feature-mini">
+                        <div class="mini-icon" style="background: var(--amber-soft); color: var(--amber);">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                        </div>
+                        <h4>Null coalescing</h4>
+                        <p><code>??</code> simplifica verificações de existência e nulidade.</p>
+                    </div>
+
+                    <div class="feature-mini">
+                        <div class="mini-icon" style="background: var(--purple-soft); color: var(--purple);">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                        </div>
+                        <h4>Spaceship operator</h4>
+                        <p>Comparações complexas em uma única linha.</p>
+                    </div>
+
+                    <div class="feature-mini">
+                        <div class="mini-icon" style="background: var(--rose-soft); color: var(--rose);">
+                            <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                        </div>
+                        <h4>Segurança reforçada</h4>
+                        <p>Remoção de <code>mysql_*</code> e reforço em PDO — ambiente mais seguro.</p>
+                    </div>
+
+                    <div class="feature-mini">
+                        <div class="mini-icon" style="background: var(--cyan-soft); color: var(--cyan);">
+                            <i class="fas fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <h4>Composer maduro</h4>
+                        <p>Ecossistema unificado de pacotes com autoload PSR-4.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SEÇÃO: MIGRAÇÃO ============ -->
+    <section class="section" aria-labelledby="guia-migracao">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge"><i class="fas fa-arrow-up-right-dots" aria-hidden="true"></i> Guia prático</span>
+                <h2 id="guia-migracao" style="margin-top: 16px;">Como <span class="gradient-text">migrar</span> do PHP
+                    legado</h2>
+                <p>Passos essenciais para trazer um projeto antigo para o PHP moderno com segurança.</p>
+            </div>
+
+            <div class="glass-card version-card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-list-check" aria-hidden="true"></i> 1. Auditoria inicial</h3>
+                        <p>Rode PHPStan ou Psalm na versão atual antes de qualquer mudança. Identifique funções
+                            removidas e padrões obsoletos.</p>
+                        <div class="code-block">
+                            <pre><code class="language-bash"># Análise estática em projeto legado
+composer require --dev phpstan/phpstan
+vendor/bin/phpstan analyse src --level=5
+
+# Buscar funções obsoletas
+grep -rn "mysql_query\|ereg\|split(" src/</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-code-branch" aria-hidden="true"></i> 2. Atualizar dependências</h3>
+                        <p>Atualize Composer para 2.x, defina uma versão mínima de PHP e atualize bibliotecas.</p>
+                        <div class="code-block">
+                            <pre><code class="language-json">{
+    "require": {
+        "php": "^8.2",
+        "ext-pdo": "*",
+        "monolog/monolog": "^3.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-shield-halved" aria-hidden="true"></i> 3. Substituir mysql_* por PDO</h3>
+                        <p>Migre todas as chamadas antigas para PDO com prepared statements.</p>
+                        <div class="code-block">
+                            <pre><code class="language-php">&lt;?php
+$pdo = new PDO(
+    'mysql:host=localhost;dbname=app;charset=utf8mb4',
+    $user,
+    $pass,
+    [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ]
+);
+
+$stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+$stmt->execute(['email' => $email]);
+?></code></pre>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-flask" aria-hidden="true"></i> 4. Testes automatizados</h3>
+                        <p>Adicione PHPUnit e escreva testes de caracterização antes de refatorar.</p>
+                        <div class="code-block">
+                            <pre><code class="language-php">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class CalculadoraTest extends TestCase {
+    public function testDescontoVip(): void {
+        $result = calcularDesconto(600, 'vip');
+        $this->assertEquals(150.0, $result);
+    }
+}
+?></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="container">
+        <div class="cta-final">
+            <h2>Agora que você conhece as <span class="gradient-text">dores do passado</span>...</h2>
+            <p>Volte ao início e descubra como o PHP 7.0 e o PHP 8.x transformaram completamente a linguagem.</p>
+            <a href="../index.html" class="btn btn-primary">
+                <i class="fas fa-rocket" aria-hidden="true"></i> Explorar PHP Moderno
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>
+                © 2026 — <strong>Alisson Aguiar</strong><br>
+                Análise técnica do PHP legado.
+            </p>
+
+            <div class="footer-social">
+                <a href="https://github.com/Alisson-aguiar" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                    aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alisson-aguiars2k/" target="_blank" rel="noopener noreferrer"
+                    class="icon-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js" defer></script>
+    <script src="../assets/js/index.js" defer></script>
+</body>
+
+</html>
